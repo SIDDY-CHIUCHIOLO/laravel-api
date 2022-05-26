@@ -46,7 +46,7 @@ class PostController extends Controller
         $newPost->slug = $data['slug'];
         $newPost->save();
 
-        return redirect()->route('admin.posts.index', $newPost)->with('message', 'Il nuovo è stato aggiunto');
+        return redirect()->route('admin.posts.index', $newPost)->with('message', 'Il nuovo post ' . $newPost->title . ' è stato aggiunto');
     }
 
     /**
@@ -88,7 +88,7 @@ class PostController extends Controller
         $post->slug = $data['slug'];
         $post->save();
 
-        return redirect()->route('admin.posts.index', $post)->with('message', $post->title .'è stato mofificato correttamente');
+        return redirect()->route('admin.posts.index', $post)->with('message', $post->title .' è stato modificato correttamente');
     }
 
     /**
@@ -100,6 +100,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route("admin.posts.index",$post)->with('message', $post->title .'è stato eliminato');
+        return redirect()->route("admin.posts.index",$post)->with('message', $post->title .' è stato eliminato');
     }
 }
